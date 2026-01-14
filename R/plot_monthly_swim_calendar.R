@@ -1,8 +1,8 @@
 library(tidyverse)
 
 plot_monthly_swim_calendar <- function(df_swims, year, month) {
-  df_swims_month <- df_swims |>
-    filter(year(activity_date) == year, month(activity_date) == month) |>
+  df_swims_month <- df_swims_month(df_swims, year, month) |>
+    summarise(across(where(is.numeric), sum), .by = activity_date) |>
     arrange(activity_date)
 
   month_fmt <- stringr::str_pad(month, width = 2, side = "left", pad = 0)
@@ -23,19 +23,19 @@ plot_monthly_swim_calendar <- function(df_swims, year, month) {
   plot <-
     ggplot(mapping = aes(day, week_of_month)) +
     geom_point(
-      data = filter(df_plot, is.na(name)),
+      data = filter(df_plot, is.na(distance)),
       size = 12,
       alpha = 0.4,
       color = "grey80"
     ) +
     geom_point(
-      data = filter(df_plot, !is.na(name)),
+      data = filter(df_plot, !is.na(distance)),
       size = 12,
       alpha = 0.6,
       color = "indianred1"
     ) +
     geom_text(
-      data = filter(df_plot, is.na(name)),
+      data = filter(df_plot, is.na(distance)),
       aes(label = day_of_month),
       color = "grey80",
       size = 5,
@@ -43,7 +43,7 @@ plot_monthly_swim_calendar <- function(df_swims, year, month) {
       family = "Fira Code"
     ) +
     geom_text(
-      data = filter(df_plot, !is.na(name)),
+      data = filter(df_plot, !is.na(distance)),
       aes(label = day_of_month),
       color = "indianred3",
       size = 5,
@@ -52,7 +52,7 @@ plot_monthly_swim_calendar <- function(df_swims, year, month) {
     ) +
     scale_y_reverse(expand = expansion(mult = 0.1)) +
     scale_x_discrete(position = "top") +
-    labs(title = glue::glue("{month.name[month]} {year}")) +
+    labs(title = glue::glue("{month} {year}")) +
     theme_swim_stats() +
     theme(
       plot.margin = margin(b = 10),

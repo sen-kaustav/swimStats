@@ -3,11 +3,10 @@ library(bslib)
 library(tidyverse)
 library(scales)
 
-# systemfonts::get_from_google_fonts("Montserrat")
-# systemfonts::get_from_google_fonts("Fira Code")
-
-app_siwmStats <- function() {
+app_swim_stats <- function() {
   df_swims <- load_swim_data()
+  choices_year <- unique(year(df_swims$activity_date))
+  choices_month <- filter_months(df_swims, year(Sys.Date()))
 
   ui <- page_sidebar(
     title = "Kaustav's Swim Stats",
@@ -21,25 +20,17 @@ app_siwmStats <- function() {
     ),
     sidebar = sidebar(
       open = "closed",
-      selectInput("year", "Select year", choices = c(2025, 2026)),
+      selectInput(
+        "year",
+        "Select year",
+        choices = choices_year,
+        selected = year(Sys.Date())
+      ),
       selectInput(
         "month",
         "Select month",
-        choices = c(
-          "Jan" = 1,
-          "Feb" = 2,
-          "Mar" = 3,
-          "Apr" = 4,
-          "May" = 5,
-          "Jun" = 6,
-          "Jul" = 7,
-          "Aug" = 8,
-          "Sep" = 9,
-          "Oct" = 10,
-          "Nov" = 11,
-          "Dec" = 12
-        ),
-        selected = 11
+        choices = choices_month,
+        selected = month(Sys.Date())
       )
     ),
     layout_column_wrap(
@@ -50,9 +41,14 @@ app_siwmStats <- function() {
         showcase = icon("water-ladder")
       ),
       value_box(
-        title = "Hours swam",
-        value = "to add",
+        title = "Distance Covered",
+        value = uiOutput("dist_swam", inline = TRUE),
         showcase = icon("water")
+      ),
+      value_box(
+        title = "Average pace (mins per 100m)",
+        value = uiOutput("avg_pace", inline = TRUE),
+        showcase = icon("clock")
       )
     ),
     layout_columns(
@@ -79,25 +75,40 @@ app_siwmStats <- function() {
   )
 
   server <- function(input, output, session) {
+    observeEvent(input$year, {
+      freezeReactiveValue(input, "month")
+      choices_month <- filter_months(df_swims, input$year)
+      latest_month <- choices_month[length(choices_month)]
+
+      updateSelectInput(
+        inputId = "month",
+        choices = choices_month,
+        selected = latest_month
+      )
+    })
+
     output$month_swim_calendar <- renderPlot(
       {
         plot_monthly_swim_calendar(
           df_swims,
           year = as.numeric(input$year),
-          month = as.numeric(input$month)
+          month = input$month
         )
       },
       res = 96
     )
 
     output$num_sessions <- renderUI({
-      num_sessions <- df_swims |>
-        filter(
-          year(activity_date) == as.numeric(input$year),
-          month(activity_date) == as.numeric(input$month)
-        ) |>
-        nrow()
-      num_sessions
+      req(input$year, input$month)
+      get_num_sessions(df_swims, input$year, input$month)
+    })
+
+    output$dist_swam <- renderUI({
+      get_dist_swam(df_swims, input$year, input$month)
+    })
+
+    output$avg_pace <- renderUI({
+      get_avg_pace(df_swims, input$year, input$month)
     })
   }
 
