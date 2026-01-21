@@ -2,7 +2,7 @@
 '$schema' = 'https://cdn.posit.co/publisher/schemas/posit-publishing-record-schema-v3.json'
 server_type = 'connect_cloud'
 server_url = 'https://connect.posit.cloud'
-client_version = '1.29.1'
+client_version = '1.29.5'
 created_at = ''
 dismissed_at = ''
 type = 'r-shiny'
@@ -11,14 +11,15 @@ id = '019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d'
 dashboard_url = 'https://connect.posit.cloud/kaustav-sen/content/019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d'
 direct_url = 'https://019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d.share.connect.posit.cloud'
 logs_url = 'https://connect.posit.cloud/kaustav-sen/content/019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d/history'
-deployed_at = '2026-01-14T00:16:13Z'
-bundle_id = '019bb9dc-2bf4-31e4-df18-9c6da037c90b'
+deployed_at = '2026-01-17T23:59:36Z'
+bundle_id = '019bce66-61b4-ce34-0bdf-3296126f8554'
 files = [
   '.posit/publish/deployments/deployment-I7DJ.toml',
   '.posit/publish/swimStats-1KAP.toml',
   'DESCRIPTION',
   'LICENSE.md',
   'NAMESPACE',
+  'R/app_config.R',
   'R/app_swim_stats.R',
   'R/load_swim_data.R',
   'R/plot_annual_swim_totals.R',
@@ -27,6 +28,9 @@ files = [
   'R/utils.R',
   'app.R',
   'data/activity_data.csv',
+  'inst/app/www/styles.scss',
+  'inst/fonts/FiraCode-Bold.ttf',
+  'inst/fonts/FiraCode-Regular.ttf',
   'renv.lock'
 ]
 
@@ -48,7 +52,8 @@ files = [
   '/DESCRIPTION',
   '/LICENSE.md',
   '/NAMESPACE',
-  '/data'
+  '/data',
+  '/inst'
 ]
 title = 'swimStats'
 
@@ -576,6 +581,29 @@ roxygennote = '7.3.2'
 encoding = 'UTF-8'
 needscompilation = 'yes'
 author = 'Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), John MacFarlane [cph] (Author of cmark)'
+
+[renv.packages.config]
+package = 'config'
+version = '0.3.2'
+source = 'Repository'
+repository = 'CRAN'
+hash = ''
+type = 'Package'
+title = 'Manage Environment Specific Configuration Values'
+'authors@r' = 'c( person("JJ", "Allaire", role = c("aut"), email = "jj@rstudio.com"), person("Andrie", "de Vries", role = "cre", email = "apdevries@gmail.com"), person("Posit Software, PBC", role = c("cph", "fnd")) )'
+maintainer = 'Andrie de Vries <apdevries@gmail.com>'
+description = 'Manage configuration values across multiple environments (e.g. development, test, production). Read values using a function that determines the current environment and returns the appropriate value.'
+url = 'https://rstudio.github.io/config/, https://github.com/rstudio/config'
+bugreports = 'https://github.com/rstudio/config/issues'
+license = 'GPL-3'
+imports = ['yaml (>= 2.1.19)']
+suggests = ['testthat', 'knitr', 'rmarkdown', 'covr', 'spelling', 'withr']
+vignettebuilder = 'knitr'
+roxygennote = '7.2.3'
+encoding = 'UTF-8'
+needscompilation = 'no'
+author = 'JJ Allaire [aut], Andrie de Vries [cre], Posit Software, PBC [cph, fnd]'
+'config/testthat/edition' = '3'
 
 [renv.packages.conflicted]
 package = 'conflicted'
@@ -2542,6 +2570,27 @@ encoding = 'UTF-8'
 needscompilation = 'no'
 author = "Winston Chang [aut] (ORCID: <https://orcid.org/0000-0002-1576-2126>), Joe Cheng [aut], JJ Allaire [aut], Carson Sievert [aut, cre] (ORCID: <https://orcid.org/0000-0002-4958-2844>), Barret Schloerke [aut] (ORCID: <https://orcid.org/0000-0001-9986-114X>), Garrick Aden-Buie [aut] (ORCID: <https://orcid.org/0000-0002-7111-0077>), Yihui Xie [aut], Jeff Allen [aut], Jonathan McPherson [aut], Alan Dipert [aut], Barbara Borges [aut], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>), jQuery Foundation [cph] (jQuery library and jQuery UI library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/www/shared/jquery-AUTHORS.txt), jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in inst/www/shared/jqueryui/AUTHORS.txt), Mark Otto [ctb] (Bootstrap library), Jacob Thornton [ctb] (Bootstrap library), Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Prem Nawaz Khan [ctb] (Bootstrap accessibility plugin), Victor Tsaran [ctb] (Bootstrap accessibility plugin), Dennis Lembree [ctb] (Bootstrap accessibility plugin), Srinivasu Chakravarthula [ctb] (Bootstrap accessibility plugin), Cathy O'Connor [ctb] (Bootstrap accessibility plugin), PayPal, Inc [cph] (Bootstrap accessibility plugin), Stefan Petre [ctb, cph] (Bootstrap-datepicker library), Andrew Rowls [ctb, cph] (Bootstrap-datepicker library), Brian Reavis [ctb, cph] (selectize.js library), Salmen Bejaoui [ctb, cph] (selectize-plugin-a11y library), Denis Ineshin [ctb, cph] (ion.rangeSlider library), Sami Samhuri [ctb, cph] (Javascript strftime library), SpryMedia Limited [ctb, cph] (DataTables library), Ivan Sagalaev [ctb, cph] (highlight.js library), R Core Team [ctb, cph] (tar implementation from R)"
 'config/testthat/edition' = '3'
+
+[renv.packages.shinyWidgets]
+package = 'shinyWidgets'
+version = '0.9.0'
+source = 'Repository'
+repository = 'CRAN'
+depends = ['R (>= 3.1.0)']
+hash = ''
+title = 'Custom Inputs Widgets for Shiny'
+'authors@r' = 'c( person("Victor", "Perrier", email = "victor.perrier@dreamrs.fr", role = c("aut", "cre", "cph")), person("Fanny", "Meyer", role = "aut"), person("David", "Granjon", role = "aut"), person("Ian", "Fellows", role = "ctb", comment = "Methods for mutating vertical tabs & updateMultiInput"), person("Wil", "Davis", role = "ctb", comment = "numericRangeInput function"), person("Spencer", "Matthews", role = "ctb", comment = "autoNumeric methods"), person(family = "JavaScript and CSS libraries authors", role = c("ctb", "cph"), comment = "All authors are listed in LICENSE.md") )'
+maintainer = 'Victor Perrier <victor.perrier@dreamrs.fr>'
+description = "Collection of custom input controls and user interface components for 'Shiny' applications.  Give your applications a unique and colorful style !"
+url = 'https://github.com/dreamRs/shinyWidgets, https://dreamrs.github.io/shinyWidgets/'
+bugreports = 'https://github.com/dreamRs/shinyWidgets/issues'
+license = 'GPL-3'
+imports = ['bslib', 'sass', 'shiny (>= 1.6.0)', 'htmltools (>= 0.5.1)', 'jsonlite', 'grDevices', 'rlang']
+suggests = ['testthat', 'covr', 'ggplot2', 'DT', 'scales', 'shinydashboard', 'shinydashboardPlus']
+roxygennote = '7.3.2'
+encoding = 'UTF-8'
+needscompilation = 'no'
+author = 'Victor Perrier [aut, cre, cph], Fanny Meyer [aut], David Granjon [aut], Ian Fellows [ctb] (Methods for mutating vertical tabs & updateMultiInput), Wil Davis [ctb] (numericRangeInput function), Spencer Matthews [ctb] (autoNumeric methods), JavaScript and CSS libraries authors [ctb, cph] (All authors are listed in LICENSE.md)'
 
 [renv.packages.sourcetools]
 package = 'sourcetools'

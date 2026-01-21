@@ -15,7 +15,8 @@ files = [
   '/DESCRIPTION',
   '/LICENSE.md',
   '/NAMESPACE',
-  '/data'
+  '/data',
+  '/inst'
 ]
 title = 'swimStats'
 
