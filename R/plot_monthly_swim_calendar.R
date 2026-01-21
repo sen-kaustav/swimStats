@@ -40,7 +40,7 @@ plot_monthly_swim_calendar <- function(df_swims, year, month) {
       color = "grey80",
       size = 5,
       fontface = "bold",
-      family = "Fira Code"
+      family = "Num Font"
     ) +
     geom_text(
       data = filter(df_plot, !is.na(distance)),
@@ -48,11 +48,11 @@ plot_monthly_swim_calendar <- function(df_swims, year, month) {
       color = "indianred3",
       size = 5,
       fontface = "bold",
-      family = "Fira Code"
+      family = "Num Font"
     ) +
     scale_y_reverse(expand = expansion(mult = 0.1)) +
     scale_x_discrete(position = "top") +
-    labs(title = glue::glue("{month} {year}")) +
+    # labs(title = glue::glue("{month} {year}")) +
     theme_swim_stats() +
     theme(
       plot.margin = margin(b = 10),

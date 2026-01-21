@@ -1,7 +1,7 @@
 library(ggplot2)
 
-theme_swim_stats <- function(base_family = "Montserrat", base_size = 12) {
-  theme_minimal(base_family = base_family, base_size = base_size) +
+theme_swim_stats <- function(base_size = 12) {
+  theme_minimal(base_size = base_size) +
     theme(
       plot.margin = margin(l = 5, r = 5, b = 10),
       axis.title = element_blank(),
@@ -12,7 +12,7 @@ theme_swim_stats <- function(base_family = "Montserrat", base_size = 12) {
       axis.text.x = element_text(
         size = rel(1),
         face = "bold",
-        family = "Fira Code"
+        family = "Num Font"
       )
     )
 }
