@@ -11,8 +11,8 @@ id = '019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d'
 dashboard_url = 'https://connect.posit.cloud/kaustav-sen/content/019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d'
 direct_url = 'https://019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d.share.connect.posit.cloud'
 logs_url = 'https://connect.posit.cloud/kaustav-sen/content/019bb9dc-2bf0-f3be-6f17-ad0fe0fb828d/history'
-deployed_at = '2026-01-25T16:00:16Z'
-bundle_id = '019bf5e2-67db-10f6-224f-9d67fac424fc'
+deployed_at = '2026-01-25T20:37:23Z'
+bundle_id = '019bf6e0-1a6c-3a86-f2cc-1328e5a49225'
 files = [
   '.posit/publish/deployments/deployment-I7DJ.toml',
   '.posit/publish/swimStats-1KAP.toml',
@@ -30,6 +30,7 @@ files = [
   'app.R',
   'data/activity_data.csv',
   'inst/app/www/logo.png',
+  'inst/app/www/manifest.webmanifest',
   'inst/app/www/styles.scss',
   'inst/fonts/FiraCode-Bold.ttf',
   'inst/fonts/FiraCode-Regular.ttf',
