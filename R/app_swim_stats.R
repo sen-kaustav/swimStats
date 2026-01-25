@@ -54,11 +54,14 @@ app_swim_stats <- function() {
     title = "Kaustav's Swim Stats",
     theme = app_theme,
     useShinyjs(),
-    tags$head(tags$link(
-      rel = "icon",
-      type = "image/png",
-      href = "www/logo.png"
-    )),
+    tags$head(
+      tags$link(
+        rel = "icon",
+        type = "image/png",
+        href = "www/logo.png"
+      ),
+      tags$link(rel = "manifest", href = "www/manifest.webmanifest")
+    ),
     sidebar = sidebar(
       open = "closed",
       pickerInput(

@@ -1,0 +1,30 @@
+{
+  "name": "Kaustav's Swim Stats",
+  "short_name": "Swim Stats",
+  "description": "An app providing my swimming analytics",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#B40F20",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "144x144"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Shortcut",
+      "short_name": "Shortcut",
+      "description": "Do something",
+      "url": "/?foo=1",
+      "icons": [
+        {
+          "src": "icons/shortcut.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
