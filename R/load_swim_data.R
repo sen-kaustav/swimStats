@@ -1,7 +1,9 @@
 library(tidyverse)
 
 load_swim_data <- function() {
-  df_activity <- read_csv(fs::path("data", "activity_data.csv"))
+  df_activity <- read_csv(
+    "https://raw.githubusercontent.com/sen-kaustav/stravaData/refs/heads/main/swim_data.csv"
+  )
 
   df_swims <-
     df_activity |>
